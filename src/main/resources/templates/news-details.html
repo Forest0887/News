@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Детали</title>
+</head>
+<body>
+    <header th:insert="blocks/header :: header"></header>
+    <div style="text-align:center;" th:each="el :  ${news}" class="alert alert-info mt-2">
+        <h3 th:text="${el.name}"></h3>
+        <p th:text="${el.long_description}"></p>
+        <p th:text="${el.type.getNameType()}" th:style="'color:' + ${el.type.getColor()}"></p>
+        <a th:href="'/home/' + ${el.id} + '/edit'">Редактировать</a><br><br>
+        <form th:action="'/home/' + ${el.id} + '/remove'" method="post">
+            <button th:href="'/home/' + ${el.id} + '/remove'" type="submit">Удалить</button>
+        </form>
+    </div>
+</body>
+</html>

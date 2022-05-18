@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Типы Новостей</title>
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<h1 style="text-align:center;">Список типов новостей</h1>
+<div style="text-align:center;  outline: 2px solid #000;" th:each="el : ${type}">
+    <h3 th:text="${el.nameType}"></h3>
+    <p th:style="'color:' + ${el.color}" th:text="${el.color}"></p>
+    <a th:href="'/home/type/' + ${el.id} + '/edit'">Редактировать</a><br><br>
+    <form th:action="'/home/type/' + ${el.id} + '/remove'" method="post">
+        <button th:href="'/home/type/' + ${el.id} + '/remove'" type="submit">Удалить</button>
+    </form><br><br>
+    <form th:action="'/home/type/' + ${el.id} + '/type_selection'" method="get">
+        <button th:href="'/home/type/' + ${el.id} + '/type_selection'" type="submit">Вывести все новости этого типа</button>
+    </form>
+</div>
+</body>
+</html>

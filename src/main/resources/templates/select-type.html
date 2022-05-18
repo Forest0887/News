@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Главная страница</title>
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<h1 style="text-align:center;">Список новостей</h1>
+<div style="text-align:center;  outline: 2px solid #000;" th:each="el : ${news}">
+    <h3 th:text="${el.name}"></h3>
+    <p th:text="${el.short_description}"></p>
+    <p th:text="${el.type.getNameType()}" th:style="'color:' + ${el.type.getColor()}"></p>
+    <a th:href="'/home/' + ${el.id}">Детальнее</a>
+</div>
+</body>
+</html>

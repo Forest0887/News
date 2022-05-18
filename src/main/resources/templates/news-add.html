@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Добавление Новости</title>
+</head>
+<body>
+    <header th:insert="blocks/header :: header"></header>
+    <h1 style="text-align:center;">Добавление новости</h1>
+    <form style="text-align:center;" action="/home/addNews" method="post">
+        <input type="text" name="name" placeholder="Введите название новости" size="22" ><br><br>
+        <input type="text" name="short_description" placeholder="Введите короткое описание новости" size="33"><br><br>
+        <input type="text" name="long_description" placeholder="Введите полное описание новости" size="100"><br><br>
+        <select type="text" size="1" required name="typeId">
+            <option th:each="el : ${types}" th:style="'color:' + ${el.color}" th:text="${el.nameType}" th:value="${el.getId()}"></option>
+        </select>
+        <button type="submit">Добавить новость</button>
+    </form>
+</body>
+</html>
